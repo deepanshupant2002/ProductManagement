@@ -53,6 +53,7 @@ namespace ProductManagement.Controllers
         public IActionResult Minus(int? id, int Quan)
         {
             if (id == null || id == 0) { return NotFound(); }
+            if(Quan-1 < 0) { return RedirectToAction("Cart"); }
             var profromdb = _db.Products.Find(id);
             if (profromdb == null) { return NotFound(); }
 
